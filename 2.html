@@ -48,45 +48,44 @@
         font-family: monospace, serif;
       }
     </style>
-    <title>1st task</title>
+    <title>2nd task</title>
   </head>
   <body>
     <script src="https://unpkg.com/react@16.13.1/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16.13.1/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone@7.9.3/babel.js"></script>
 
+    <div id="root"></div>
+
     <script type="text/babel">
-      const body = document.querySelector("body");
-      const input = document.createElement("input");
-      const label = document.createElement("label");
-      const btn = document.createElement("button");
-      const output = document.createElement("span");
-      const wrap = document.createElement("div");
-
-      input.setAttribute("class", "input");
-      input.setAttribute("name", "input");
-      input.setAttribute("placeholder", "type some text");
-      label.setAttribute("for", "input");
-      label.setAttribute("class", "label");
-      btn.setAttribute("class", "btn");
-      output.setAttribute("class", "span");
-      wrap.setAttribute("class", "wrapper");
-
-      label.textContent = "created by 'low-level programming'";
-      btn.textContent = "show value";
-
-      function submit() {
-        const inputVal = document.querySelector(".input").value;
-        output.innerHTML = inputVal;
+      let inputValue = "";
+      function handleClick() {
+        alert(inputValue);
       }
+      const root = document.getElementById("root");
+      const label = React.createElement(
+        "label",
+        { className: "label" },
+        "label"
+      );
+      const input = React.createElement("input", {
+        className: "input",
+        placeholder: "ervin",
+        onChange: (e) => console.log((inputValue = e.target.value)),
+      });
+      const btn = React.createElement(
+        "button",
+        { className: "btn", onClick: handleClick },
+        "show value"
+      );
 
-      btn.addEventListener("click", () => submit());
+      const wrap = React.createElement("div", { className: "wrapper" }, [
+        label,
+        input,
+        btn,
+      ]);
 
-      wrap.appendChild(label);
-      wrap.appendChild(input);
-      wrap.appendChild(btn);
-      wrap.appendChild(output);
-      body.appendChild(wrap);
+      ReactDOM.render(wrap, root);
     </script>
   </body>
 </html>

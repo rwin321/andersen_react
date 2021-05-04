@@ -48,45 +48,39 @@
         font-family: monospace, serif;
       }
     </style>
-    <title>1st task</title>
+    <title>3rd task</title>
   </head>
   <body>
     <script src="https://unpkg.com/react@16.13.1/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16.13.1/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone@7.9.3/babel.js"></script>
 
+    <div id="root"></div>
+
     <script type="text/babel">
-      const body = document.querySelector("body");
-      const input = document.createElement("input");
-      const label = document.createElement("label");
-      const btn = document.createElement("button");
-      const output = document.createElement("span");
-      const wrap = document.createElement("div");
+      const state = {
+        trigger: false,
+        inputValue: "",
+      };
 
-      input.setAttribute("class", "input");
-      input.setAttribute("name", "input");
-      input.setAttribute("placeholder", "type some text");
-      label.setAttribute("for", "input");
-      label.setAttribute("class", "label");
-      btn.setAttribute("class", "btn");
-      output.setAttribute("class", "span");
-      wrap.setAttribute("class", "wrapper");
-
-      label.textContent = "created by 'low-level programming'";
-      btn.textContent = "show value";
-
-      function submit() {
-        const inputVal = document.querySelector(".input").value;
-        output.innerHTML = inputVal;
+      function handleClick() {
+        alert(state.inputValue);
       }
-
-      btn.addEventListener("click", () => submit());
-
-      wrap.appendChild(label);
-      wrap.appendChild(input);
-      wrap.appendChild(btn);
-      wrap.appendChild(output);
-      body.appendChild(wrap);
+      const wrap = (
+        <div className="wrapper">
+          <label className="label">using react elements</label>
+          <input
+            className="input"
+            placeholder="type some text..."
+            onChange={(e) => (state.inputValue = e.target.value)}
+          />
+          <button className="btn" onClick={handleClick}>
+            show value
+          </button>
+          <div className="span">{state.trigger && state.inputValue}</div>
+        </div>
+      );
+      ReactDOM.render(wrap, root);
     </script>
   </body>
 </html>
