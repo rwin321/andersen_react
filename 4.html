@@ -49,7 +49,7 @@
         font-family: monospace, serif;
       }
     </style>
-    <title>3rd task</title>
+    <title>4th task</title>
   </head>
   <body>
     <script src="https://unpkg.com/react@16.13.1/umd/react.development.js"></script>
@@ -59,42 +59,59 @@
     <div id="root"></div>
 
     <script type="text/babel">
-      class Wrap extends React.Component {
-        constructor(props) {
-          super(props);
-          this.handleClick = this.handleClick.bind(this);
-          this.handleChange = this.handleChange.bind(this);
-          this.state = { inputValue: "" };
-        }
-        handleChange(e) {
-          this.setState({ inputValue: e.target.value });
-        }
-        handleClick() {
-          alert(`output: ${this.state.inputValue}`);
-        }
+      const Label = () => {
+        return (
+          <>
+            <label htmlFor="inputValue" className="label">
+              using React JSX
+            </label>
+          </>
+        );
+      };
+      const Input = ({ inputValue, setInputValue }) => {
+        const handleChange = (e) => {
+          setInputValue(e.target.value);
+          console.log(inputValue);
+        };
 
-        render() {
-          return (
-            <div className="wrapper">
-              <label className="label" htmlFor="input">
-                using JSX
-              </label>
-              <input
-                className="input"
-                name="input"
-                onChange={this.handleChange}
-                value={this.state.inputValue}
-                onChange={this.handleChange}
-              />
-              <button className="btn" onClick={this.handleClick}>
-                show value
-              </button>
-            </div>
-          );
-        }
-      }
+        return (
+          <>
+            <input
+              name="inputValue"
+              className="input"
+              value={inputValue}
+              onChange={handleChange}
+            />
+          </>
+        );
+      };
+      const Button = ({ inputValue }) => {
+        const handleClick = () => {
+          alert(`output: ${inputValue}`);
+        };
 
-      ReactDOM.render(React.createElement(Wrap), root);
+        return (
+          <>
+            <button className="btn" onClick={handleClick}>
+              show info
+            </button>
+          </>
+        );
+      };
+
+      const App = () => {
+        const [inputValue, setInputValue] = React.useState("");
+
+        return (
+          <div className="wrapper">
+            <Label />
+            <Input inputValue={inputValue} setInputValue={setInputValue} />
+            <Button inputValue={inputValue} />
+          </div>
+        );
+      };
+
+      ReactDOM.render(<App />, root);
     </script>
   </body>
 </html>
