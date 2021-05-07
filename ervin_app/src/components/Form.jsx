@@ -5,7 +5,6 @@ import Button from "./button/Button";
 
 const Form = ({ counter, setCounter }) => {
   const [inputValue, setInputValue] = useState("");
-  const [disabled, setDisabled] = useState(false);
   const inputRef = React.createRef();
 
   const handleSubmit = (e) => {
@@ -15,11 +14,6 @@ const Form = ({ counter, setCounter }) => {
 
   const onHandleChange = (e) => {
     setInputValue(e.target.value);
-    if (inputValue.includes("react")) {
-      setDisabled(true);
-    } else {
-      setDisabled(false);
-    }
   };
 
   const onFocusHandler = () => {
@@ -45,7 +39,11 @@ const Form = ({ counter, setCounter }) => {
         onChange={onHandleChange}
       />
       <div className={style.btnBlock}>
-        <Button type="submit" btnName="submit" disabled={disabled} />
+        <Button
+          type="submit"
+          btnName="submit"
+          disabled={inputValue.includes("react")}
+        />
         <Button type="button" btnName="focus" onFocusHandler={onFocusHandler} />
       </div>
     </form>
