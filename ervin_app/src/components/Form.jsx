@@ -3,7 +3,7 @@ import style from "./Form.module.css";
 import TextField from "./textfiled/TextField";
 import Button from "./button/Button";
 
-const Form = () => {
+const Form = ({ counter, setCounter }) => {
   const [inputValue, setInputValue] = useState("");
   const [disabled, setDisabled] = useState(false);
   const inputRef = React.createRef();
@@ -22,10 +22,19 @@ const Form = () => {
     }
   };
 
-  const onFocusHandler = () => inputRef.current.focus();
+  const onFocusHandler = () => {
+    console.log(
+      "focus handler usage -> rerender whole APP, because it changes the APP local state"
+    );
+    inputRef.current.focus();
+    setCounter({ counter: counter + 1 });
+    console.log(counter);
+  };
 
   return (
     <form onSubmit={handleSubmit} className={style.form}>
+      {console.log("FORM rendered")}
+
       <TextField
         inputRef={inputRef}
         name="input"
