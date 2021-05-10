@@ -56,72 +56,18 @@
     <script type="text/babel">
       const e = React.createElement;
 
-      const CreateComponent = (elem) => {
-        return e(
-          elem.type,
-          {
-            className: elem.class,
-            key: elem.id,
-            onClick: elem.onClick,
-            value: elem.value,
-            onChange: elem.onChange,
-          },
-          elem.children
-        );
-      };
-
-      class Wrap extends React.Component {
-        constructor(props) {
-          super(props);
-          this.handleOnChange = this.handleOnChange.bind(this);
-          this.handleCLick = this.handleCLick.bind(this);
-
-          this.state = {
-            inputValue: "",
-            elemsData: [
-              {
-                id: 1,
-                type: "label",
-                class: "label",
-                children: "using React,createElement (without JSX)",
-              },
-              {
-                id: 2,
-                type: "input",
-                class: "input",
-                children: null,
-                onChange: this.handleOnChange,
-                value: this.inputValue,
-              },
-              {
-                id: 3,
-                type: "button",
-                class: "btn",
-                children: "show value",
-                onClick: this.handleCLick,
-              },
-            ],
-          };
-        }
-        handleOnChange(e) {
-          console.log(e.target.value);
-          this.setState({ inputValue: e.target.value });
-        }
-        handleCLick() {
-          alert(`output: ${this.state.inputValue}`);
-        }
-        render() {
-          return e(
-            "div",
-            { className: "wrapper" },
-            this.state.elemsData.map((elem) => {
-              return CreateComponent(elem);
-            })
-          );
-        }
-      }
-
-      ReactDOM.render(e(Wrap), root);
+      ReactDOM.render(
+        e("div", { className: "wrapper" }, [
+          e("label", { className: "label" }, "label"),
+          e(
+            "input",
+            { className: "input", placeholder: "type some text" },
+            null
+          ),
+          e("button", { className: "btn" }, "button"),
+        ]),
+        root
+      );
     </script>
   </body>
 </html>

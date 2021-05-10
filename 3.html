@@ -42,12 +42,6 @@
         font-weight: 500;
         border-radius: 0.4rem;
       }
-      .span {
-        display: block;
-        margin: 1rem 0;
-        font-size: 2rem;
-        font-family: monospace, serif;
-      }
     </style>
     <title>3rd task</title>
   </head>
@@ -59,42 +53,17 @@
     <div id="root"></div>
 
     <script type="text/babel">
-      class Wrap extends React.Component {
-        constructor(props) {
-          super(props);
-          this.handleClick = this.handleClick.bind(this);
-          this.handleChange = this.handleChange.bind(this);
-          this.state = { inputValue: "" };
-        }
-        handleChange(e) {
-          this.setState({ inputValue: e.target.value });
-        }
-        handleClick() {
-          alert(`output: ${this.state.inputValue}`);
-        }
+      const element = (
+        <div className="wrapper">
+          <label className="label" htmlFor="input">
+            using JSX
+          </label>
+          <input className="input" name="input" />
+          <button className="btn">show value</button>
+        </div>
+      );
 
-        render() {
-          return (
-            <div className="wrapper">
-              <label className="label" htmlFor="input">
-                using JSX
-              </label>
-              <input
-                className="input"
-                name="input"
-                onChange={this.handleChange}
-                value={this.state.inputValue}
-                onChange={this.handleChange}
-              />
-              <button className="btn" onClick={this.handleClick}>
-                show value
-              </button>
-            </div>
-          );
-        }
-      }
-
-      ReactDOM.render(React.createElement(Wrap), root);
+      ReactDOM.render(element, root);
     </script>
   </body>
 </html>
