@@ -2,7 +2,7 @@ import React from "react";
 
 import style from "./Button.module.css";
 
-export const Button = ({ type, btnName, disabled, onFocusHandler }) => {
+export const Button = ({ type, disabled, onFocusHandler, children }) => {
   return (
     <>
       <button
@@ -11,7 +11,7 @@ export const Button = ({ type, btnName, disabled, onFocusHandler }) => {
         onClick={onFocusHandler}
         type={type}
       >
-        {btnName}
+        {children}
       </button>
     </>
   );

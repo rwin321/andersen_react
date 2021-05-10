@@ -39,12 +39,12 @@ const Form = ({ counter, setCounter }) => {
         onChange={onHandleChange}
       />
       <div className={style.btnBlock}>
-        <Button
-          type="submit"
-          btnName="submit"
-          disabled={inputValue.includes("react")}
-        />
-        <Button type="button" btnName="focus" onFocusHandler={onFocusHandler} />
+        <Button type="submit" disabled={inputValue.includes("react")}>
+          submit
+        </Button>
+        <Button type="button" onFocusHandler={onFocusHandler}>
+          focus
+        </Button>
       </div>
     </form>
   );
