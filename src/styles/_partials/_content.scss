@@ -1,0 +1,37 @@
+.users {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-around;
+}
+
+.user {
+  padding: 1rem;
+  width: 40rem;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  &__name {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  &__email {
+    color: blue;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 850px) {
+  .users {
+    width: 90%;
+  }
+  .user {
+    width: 100%;
+  }
+}

@@ -1,0 +1,29 @@
+.navbar {
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 600;
+  font-family: serif;
+  height: 100%;
+  padding: 0 5rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+  &__menu {
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  &__item {
+    padding: 1rem;
+    font-size: 1.5rem;
+    &:hover {
+      cursor: pointer;
+      transition: 0.3s ease-in-out;
+      background-color: #000;
+      & > a {
+        color: white;
+      }
+    }
+  }
+  &__link {
+    color: var(--primary-dark);
+  }
+}
