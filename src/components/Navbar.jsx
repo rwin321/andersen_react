@@ -7,23 +7,23 @@ const Navbar = () => {
     <div className="navbar">
       <ul className="navbar__menu">
         <li className="navbar__item">
-          <NavLink className="navbar__link" to="contacts">
-            Contacts
-          </NavLink>
-        </li>
-        <li className="navbar__item">
           <NavLink className="navbar__link" to="/">
             Home
           </NavLink>
         </li>
         <li className="navbar__item">
-          <NavLink className="navbar__link" to="about">
-            About
+          <NavLink className="navbar__link" to="todos">
+            Todos
           </NavLink>
         </li>
         <li className="navbar__item">
           <NavLink className="navbar__link" to="users">
             Users
+          </NavLink>
+        </li>
+        <li className="navbar__item">
+          <NavLink className="navbar__link" to="contacts">
+            Contacts
           </NavLink>
         </li>
       </ul>

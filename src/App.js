@@ -1,6 +1,6 @@
 import "./styles/main.scss";
 import { Switch, Route } from "react-router-dom";
-import About from "./components/About";
+import Todos from "./components/Todos";
 import Contacts from "./components/contacts/Contacts";
 import Home from "./components/Home";
 import Users from "./components/users/Users";
@@ -13,6 +13,7 @@ const App = () => {
   return (
     <div className="app-wrapper">
       <Navbar />
+      {/* USING react-router-dom in APP */}
       <Switch>
         <div className="wrapper-content">
           <Route
@@ -22,8 +23,8 @@ const App = () => {
               <Home />
             ))}
           />
-          <Route exact path="/about">
-            <About />
+          <Route exact path="/todos">
+            <Todos />
           </Route>
           <Route exact path="/users" component={withMounted(Users)} />
           <Route exact path="/contacts">

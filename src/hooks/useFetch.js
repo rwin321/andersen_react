@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+// useState, useEffect implemented in this hook
+
 const useFetch = (url, options) => {
   const [payload, setPayload] = useState({
     loading: false,
@@ -25,7 +27,6 @@ const useFetch = (url, options) => {
       console.log("Fetched data");
     }
   }, []);
-
   return {
     ...payload,
     getData,
